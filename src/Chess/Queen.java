@@ -18,26 +18,26 @@ public class Queen extends Piece {
 		int direction1 = (finish[1] - start[1])/Math.abs(start[1]-finish[1]);
 		
 		//check if moves like rook. if yes, checks rows
-			if(start[0] == finish[0]) {
-				for(int i = 1; i < Math.abs(start[1] - finish[1]); i++) {
-					if(hmap.get(start[0], start[1] + i * direction1) == null)
-						return false;	
-				}
+		if(start[0] == finish[0]) {
+			for(int i = 1; i < Math.abs(start[1] - finish[1]); i++) {
+				if(hmap.get(start[0], start[1] + i * direction1) == null)
+					return false;	
 			}
-			if(start[1] == finish[1]) {
-				for(int i = 1; i < Math.abs(start[0] - finish[0]); i++) {
-					if(hmap.get(start[0] + i * direction0, start[1]) != null)
-						return false;
-				}
-			}
-		//otherwise has to move like bishop, checking diagonals
+		}
+		if(start[1] == finish[1]) {
 			for(int i = 1; i < Math.abs(start[0] - finish[0]); i++) {
-				if(hmap.get(start[0] + i * direction0, start[1] + i * direction1) != null)
+				if(hmap.get(start[0] + i * direction0, start[1]) != null)
 					return false;
 			}
+		}
+		//otherwise has to move like bishop, checking diagonals
+		for(int i = 1; i < Math.abs(start[0] - finish[0]); i++) {
+			if(hmap.get(start[0] + i * direction0, start[1] + i * direction1) != null)
+				return false;
+		}
 		//checks if end square is empty or contains opponents piece
-			if((hmap.get(finish)).getColor() != this.color || hmap.get(finish) == null)
-				return true;
+		if((hmap.get(finish)).getColor() != this.color || hmap.get(finish) == null)
+			return true;
 		return false;
 	}
 	
