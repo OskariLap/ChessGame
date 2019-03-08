@@ -29,7 +29,7 @@ public class Chess {
 		public int[] finishmove(String move){
 				
 			int finishX = (move.toUpperCase().charAt(2));
-				int finishY = (Character.getNumericValue(move.charAt(1))); 
+				int finishY = (Character.getNumericValue(move.charAt(3))); 
 				int[] finish = new int[] {finishX, finishY};
 				return finish;
 			  }
