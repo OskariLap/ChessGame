@@ -1,19 +1,39 @@
 package Chess;
+
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Chess {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Board.createBoard(hmap);
 		Scanner scanner = new Scanner(System.in);
+		System.out.println("Give move");
+		String move =scanner.nextLine(); 
+		Startmove(move);
+	}
+	
 		
 		HashMap<int[], Piece> hmap = new HashMap<int[], Piece>();
 		
-		Board.createBoard(hmap);
 		
-		/*
+		
+		
+		public int[] startmove(String move){
+				
+				int startX = (move.toUpperCase().charAt(0)) - 64;
+				int startY = (Character.getNumericValue(move.charAt(1))); 
+				int[] start = new int[] {startX, startY};
+				return start;
+		}
+		public int[] finishmove(String move){
+				
+			int finishX = (move.toUpperCase().charAt(2));
+				int finishY = (Character.getNumericValue(move.charAt(1))); 
+				int[] finish = new int[] {finishX, finishY};
+				return finish;
+			  }
+	/*
 		 * After setting the board and creating all the pieces, the idea is to create a turn-based loop.
 		 * 
 		 * 1: read input from player
@@ -29,17 +49,17 @@ public class Chess {
 		
 		//ASCII:  A == 65;  H == 72
 		//changes args[]-letters into number values for board coordinates
-		int vaakarivi0 = (args[0].toUpperCase().charAt(0)) - 64;
-		int vaakarivi1 = (args[1].toUpperCase().charAt(0)) - 64;
- 		
-		int[] start = new int[] {vaakarivi0, (int)(args[0].charAt(1))};
-		int[] finish = new int[] {vaakarivi1, (int)(args[1].charAt(1))};
 		
 		
+		//Example input b3b4 moves from b3 to b4
+		
+		
+	
+		
+	
 		if(hmap.get(start) == null); //virhe
 
 		hmap.get(start).checkMove();
 		
 		
 	}
-}
